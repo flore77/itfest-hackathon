@@ -1,0 +1,25 @@
+home:
+    path: /
+    defaults: { _controller: UserBundle:User:Home }
+
+check_username:
+    path:     /check-username
+    defaults: { _controller: UserBundle:User:CheckUsername }
+
+sign_up:
+    path:   /signup
+    defaults: { _controller: UserBundle:User:SignUpFormDisplay }
+
+sign_up_process:
+    path:   /signup-check
+    defaults: { _controller: UserBundle:User:SignUpFormHandle }
+    
+log_in:
+    path:   /login
+    defaults: { _controller: UserBundle:User:LogInFormDisplay }
+
+log_in_process:
+    path:   /login-check
+
+log_out:
+    path:   /logout

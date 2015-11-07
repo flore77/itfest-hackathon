@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block title %} Autentificare {% endblock %}
+
+{% block header %}
+    <h2>Formular de autentificare</h2>
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.username) }}
+    {{ form_row(form.password) }}
+    <div class="form-group">
+        <input type="checkbox" id="remember_me" name="_remember_me" unchecked/>
+        <label for="remember_me">Remember me</label>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

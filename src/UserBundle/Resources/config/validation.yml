@@ -1,0 +1,42 @@
+UserBundle\Entity\User:
+    properties:
+        lastName:
+            - NotBlank:
+                message: Mandatory
+            - Length:
+                max: 30
+                maxMessage: "Your last name is longer than {{ limit }} characters!"
+
+        firstName:
+            - NotBlank:
+                message: Mandatory
+            - Length:
+                max: 30
+                maxMessage: "Your first name is longer than {{ limit }} characters!"
+        username:
+            - NotBlank:
+                message: Mandatory
+            - Length:
+                max: 30
+                maxMessage: "Your username is longer than {{ limit }} characters!"
+
+        password:
+            - NotBlank:
+                message: Mandatory
+        verifyPassword:
+            - NotBlank:
+                message: Mandatory
+
+        email:
+          - NotBlank:
+                message: Mandatory
+          - Email:
+                message: Your email "{{ value }}" is not good!
+                checkMX: true
+          - Length:
+                max: 30
+                maxMessage: "Your email is longer than {{ limit }} characters!"
+
+    getters:
+        passwordLegal:
+            - "False":  { message: "The passwords are not equal!" }

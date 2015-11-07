@@ -5,8 +5,37 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     </head>
-    <body>
+    <body class="container">
+        <section>
+            <div>
+                {% for flashMessage in app.session.flashbag.get('error') %}
+                    <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        {{ flashMessage|nl2br }}
+                    </div>
+                {% endfor %}
+
+                {% for flashMessage in app.session.flashbag.get('warning') %}
+                    <div class="alert alert-warning" role="alert">
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+                        <span class="sr-only">Warning:</span>
+                        {{ flashMessage|nl2br }}
+                    </div>
+                {% endfor %}
+
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success" role="alert">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        <span class="sr-only">Success:</span>
+                        {{ flashMessage|nl2br }}
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

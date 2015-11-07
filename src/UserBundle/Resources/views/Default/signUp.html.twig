@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block title %} Inregistrare {% endblock %}
+
+{% block header %}
+    <h2>Formular de inregistrare</h2>
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.lastName) }}
+    {{ form_row(form.firstName) }}
+    <div class="row">
+        <div class="col-md-11">
+            {{ form_row(form.username) }}
+        </div>
+        <div class="col-md-1">
+            <button id="check" class="btn btn-info" style="margin-top: 25px" >Verifica</button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $("#check").on("click", function(event) {
+                event.preventDefault();
+
+                $.ajax ({
+                    url: "{{ path('check_username') }}",
+                    type: "POST",
+                    async: false,
+                    data: {
+                        username: signUp_username.value
+                    },
+                    success: function() {
+                        $("#signUp_username").parent().removeClass();
+                        $("#signUp_username").parent().addClass("form-group has-success");
+                    },
+                    error: function() {
+                        $("#signUp_username").parent().removeClass();
+                        $("#signUp_username").parent().addClass("form-group has-error");
+                    }
+                });
+
+            });
+        });
+    </script>
+{% endblock %}
