@@ -2,10 +2,10 @@
 
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
 
-{% block title %} Inregistrare {% endblock %}
+{% block title %} Sign up {% endblock %}
 
 {% block header %}
-    <h2>Formular de inregistrare</h2>
+    <h2>Sign Up Form</h2>
 {% endblock %}
 
 {% block body %}
@@ -19,7 +19,7 @@
             {{ form_row(form.username) }}
         </div>
         <div class="col-md-1">
-            <button id="check" class="btn btn-info" style="margin-top: 25px" >Verifica</button>
+            <button id="check" class="btn btn-info" style="margin-top: 25px" >Check</button>
         </div>
     </div>
     {{ form_end(form) }}

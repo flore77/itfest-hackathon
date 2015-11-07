@@ -2,14 +2,47 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %} Accenture Survey {% endblock %}</title>
+        {% block stylesheets %} {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="{{ asset("css/global.css") }}">
     </head>
-    <body class="container">
-        <section>
+
+    <body>
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="{{ path('home') }}">
+                    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                    Accenture Survey
+                </a>
+
+                {# <ul class="nav navbar-nav navbar-left">
+                     <li><a href="{{ path('problems', { 'cid': 1 }) }}">Probleme</a></li>
+                     {% if is_granted("ROLE_TEACHER") %}
+                         <li><a href="{{ path('classrooms') }}">Clase</a></li>
+                     {% endif %}
+                     {% if app.user != null %}
+                         <li><a href="{{ path('homeworks') }}">Teme</a></li>
+                     {% endif %}
+                 </ul>#}
+
+                <ul class="nav navbar-nav navbar-right">
+                    {% if app.user == null %}
+                        <li><a href="{{ path("log_in") }}">Log in</a></li>
+                        <li><a href="{{ path('sign_up') }}">Sign up</a></li>
+                    {% else %}
+                        <li><a href="{{ path("log_out") }}">Log out</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+
+        <header class="container">{% block header %} {% endblock %}</header>
+
+        <section class="container">
             <div>
                 {% for flashMessage in app.session.flashbag.get('error') %}
                     <div class="alert alert-danger" role="alert">
@@ -35,8 +68,17 @@
                     </div>
                 {% endfor %}
             </div>
+
+            {% block body %} {% endblock %}
         </section>
-        {% block body %}{% endblock %}
+
+
+        <footer class="container">
+            <div class="text-center" style="margin-top: 10px; margin-bottom: 10px">
+                <a href="{{ path("home") }}">Home</a>
+            </div>
+        </footer>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

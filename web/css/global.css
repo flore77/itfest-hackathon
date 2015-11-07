@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+body {
+    padding-top: 55px;
+    background-color: #E9EAED;
+}
+
+header {
+    padding-top: 20px;
+    background-color: white;
+}
+
+section {
+    background-color: white;
+    border-bottom: 1px solid #E9EAED;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+footer {
+    background-color: #F8F8F8;
+}
+
+footer a  {
+    color: #777777;
+    padding-right: 10px;
+}
+
+footer a:hover {
+    color: #333333;
+    text-decoration: none;
+}
