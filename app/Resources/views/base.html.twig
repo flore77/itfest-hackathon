@@ -34,6 +34,8 @@
                         <li><a href="{{ path("log_in") }}">Log in</a></li>
                         <li><a href="{{ path('sign_up') }}">Sign up</a></li>
                     {% else %}
+                        <li><a href="{{ path("survey_creation_step1") }}">Create survey</a></li>
+                        <li><a href="{{ path("my_surveys") }}">My surveys</a></li>
                         <li><a href="{{ path("log_out") }}">Log out</a></li>
                     {% endif %}
                 </ul>

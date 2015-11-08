@@ -31,6 +31,11 @@ class User extends BaseUser {
      */
     protected $email;
 
+    /**
+     * @ORM\OneToMany(targetEntity="SurveyBundle\Entity\Survey", mappedBy="owner")
+     */
+    protected $surveys;
+
     // Auxiliary variables used for validations.
     protected $verifyPassword;
 
@@ -43,6 +48,7 @@ class User extends BaseUser {
         date_default_timezone_set('Europe/Bucharest');
 
         $this->joinDate = new \DateTime(date("d-m-Y H:i:s"));
+        $this->roles = array("ROLE_USER");
     }
 
     /**
@@ -166,5 +172,39 @@ class User extends BaseUser {
      */
     public function getVerifyPassword() {
         return $this->verifyPassword;
+    }
+
+    /**
+     * Add survey
+     *
+     * @param \SurveyBundle\Entity\Survey $survey
+     *
+     * @return User
+     */
+    public function addSurvey(\SurveyBundle\Entity\Survey $survey)
+    {
+        $this->surveys[] = $survey;
+
+        return $this;
+    }
+
+    /**
+     * Remove survey
+     *
+     * @param \SurveyBundle\Entity\Survey $survey
+     */
+    public function removeSurvey(\SurveyBundle\Entity\Survey $survey)
+    {
+        $this->surveys->removeElement($survey);
+    }
+
+    /**
+     * Get surveys
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSurveys()
+    {
+        return $this->surveys;
     }
 }

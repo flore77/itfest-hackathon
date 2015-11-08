@@ -1,0 +1,32 @@
+my_surveys:
+    path: /my-surveys
+    defaults: { _controller: SurveyBundle:Survey:displayMySurveys }
+
+survey_creation_step1:
+    path: /create/survey/1
+    defaults: { _controller: SurveyBundle:Survey:createSurveyStep1 }
+
+survey_creation_step1_check:
+    path: /create/survey/1-check
+    defaults: { _controller: SurveyBundle:Survey:createSurveyStep1Check }
+
+survey_creation_step2:
+    path: /create/survey/2
+    defaults: { _controller: SurveyBundle:Survey:createSurveyStep2 }
+
+survey_creation_step2-check:
+    path: /create/survey/2-check
+    defaults: { _controller: SurveyBundle:Survey:createSurveyStep2Check }
+
+survey_creation_step3:
+    path: /create/survey/3
+    defaults: { _controller: SurveyBundle:Survey:createSurveyStep3 }
+
+survey_creation_step3-check:
+    path: /create/survey/3-check
+    defaults: { _controller: SurveyBundle:Survey:createSurveyStep3Check }
+
+modify_survey:
+    path: /modify/survey/{sid}
+    defaults: { _controller: SurveyBundle:Survey:modifySurvey }
+

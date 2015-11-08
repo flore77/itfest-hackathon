@@ -26,6 +26,11 @@ class BaseUser implements AdvancedUserInterface, \Serializable {
     protected $password;
 
     /**
+     * @ORM\Column(type="array")
+     */
+    protected $roles;
+
+    /**
      * Checks whether the user's account has expired.
      *
      * Internally, if this method returns false, the authentication system
@@ -129,7 +134,7 @@ class BaseUser implements AdvancedUserInterface, \Serializable {
      * @return Role[] The user roles
      */
     public function getRoles() {
-        return array('ROLE_USER');
+        return $this->roles;
     }
 
     /**
@@ -201,6 +206,18 @@ class BaseUser implements AdvancedUserInterface, \Serializable {
      */
     public function setUsername($username) {
         $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Set roles
+     *
+     * @param array $roles
+     * @return User
+     */
+    public function setRoles($roles) {
+        $this->roles = $roles;
 
         return $this;
     }

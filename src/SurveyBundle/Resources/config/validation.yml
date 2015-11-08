@@ -1,0 +1,18 @@
+SurveyBundle\Entity\Survey:
+    properties:
+        name:
+            - NotBlank:
+                message: Mandatory
+                groups: [step1]
+        freeTextNo:
+            - Range:
+                min: 1
+                groups: [step1]
+        templateQNo:
+            - Range:
+                min: 1
+                groups: [step1]
+        starQNo:
+            - Range:
+                min: 1
+                groups: [step1]

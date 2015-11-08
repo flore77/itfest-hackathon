@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    <h2>My surveys</h2>
+{% endblock %}
+
+{% block body %}
+    {% if surveys == null %}
+        <p><em>You don't have any survey!</em></p>
+    {% endif %}
+
+
+    <table class="table table-striped">
+        <thead>
+            <th>Nr.</th>
+            <th>Name</th>
+            <th>Free text</th>
+            <th>State</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {% for survey in surveys %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ survey.name }}</td>
+                    <td>{{ survey.freeTextNo }}</td>
+                    <td>
+                        {% if survey.status == 0 %}
+                            U
+                        {% else %}
+                            P
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ path("modify_survey", { "sid": survey.sid}) }}"><button class="btn btn-warning">Modify</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

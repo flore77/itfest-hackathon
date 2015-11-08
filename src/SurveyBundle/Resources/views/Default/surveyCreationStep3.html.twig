@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block header %}
+    <h2>Create Survey - Step 3</h2>
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_errors(form) }}
+
+    {% for q in starQ %}
+        <label>{{ q.text }}</label>
+        <div style="margin-top: 10px; margin-bottom: 10px">
+            {% for i in 0..4 %}
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    {{ form_end(form) }}
+{% endblock %}

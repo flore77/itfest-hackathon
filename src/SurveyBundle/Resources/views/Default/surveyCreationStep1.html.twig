@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block header %}
+    <h2>Create Survey - Step 1</h2>
+{% endblock %}
+
+{% block body %}
+    {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+{% endblock %}
